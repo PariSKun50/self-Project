@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>CSS Template</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		
+		body {
+			font-family: sans-serif;
+			background-image: url("/static/images/background_image1.jpg");
+			background-size: cover;
+			text-align: center;
+			color: rgb(249, 244, 244);
+			background-position: center;
+			margin-top: 0;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		/* Style the footer */
+		button {
+			padding: 20px 60px;
+			background-color: Silver;
+			color: Black;
+			text-align: center;
+			font-size: 12px;
+			font-weight: bold;
+			border: 2px;
+			border-radius: 12px;
+		}
+		button:hover,
+		button:active {
+			background-color: #f3ecec;
+			border-color: #f3ecec;
+		}
+		select#company_name {
+        height: 40px; /* Set the desired height */
+        width: 200px; /* Set the desired width */
+		border: 2px;
+		border-radius: 4px;
+    	}
+		.red {
+        	color: red;
+    	}
+
+		.blue {
+			color: rgb(3, 3, 255);
+		}
+
+		.green {
+			color: rgb(0, 255, 0);
+		}
+
+</style>
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Foundational Project</h1>
+		<h2>Sentiment Analysis of Stocks</h2>
+		<form action="/" method="post">
+			<div class="form-control">
+				<h2>Company Name</h2>
+				<select name="company_name" id="company_name" required>
+					<option value="" disabled selected>SELECT A COMPANY</option>
+					{% for column_name in column_names %}
+					<option value="{{ column_name }}">{{ column_name }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div>
+				<br><button>Submit</button></br>
+			</div>
+		</form>
+		<br>
+		<br>
+		
+		<h2 class="{% if 'Negative' in response %}red{% elif 'Positive' in response %}green{% else %}blue{% endif %}">
+			{{ response }}
+		</h2>
+		
+	</div>
+</body>
+</html>

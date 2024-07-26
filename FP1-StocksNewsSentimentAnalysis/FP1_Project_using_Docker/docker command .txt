@@ -1,0 +1,8 @@
+
+https://labs.play-with-docker.com/
+git clone https://github.com/Term2Assignment/Docker-image
+cd Docker-image
+cd FP1_Project_using_Docker
+ls
+docker build -t fp1 .
+docker run -it -p 5000:5000 fp1
